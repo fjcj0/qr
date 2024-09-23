@@ -51,6 +51,7 @@ export default function QR() {
     const [BackgroundColor, setBackgroundColor] = useState("#FFFFFF");
     const [downloadLink, setDownloadLink] = useState("");
     const [ActiveInputOperation, setActiveInputOperation] = useState("url");
+    const [link,setLink] = useState("");
     const [id,setId] = useState("");
     const [IsLogin, setIsLogin] = useState(false);
     const token = {
@@ -69,6 +70,7 @@ export default function QR() {
             buttonclick.style.display = 'flex';
             buttonclick.style.flexDirection = 'column';
             buttonnotclick.style.display = 'none';
+            setLink(url);
         } else {
             itsqr.style.display = 'none';
             notqr.style.display = 'block';
@@ -161,7 +163,8 @@ export default function QR() {
                             user_id: id,
                             qr_code: QrImage !== "" ? QrImage : null,
                             downloaded_at: downloadat,
-                            description: description
+                            description: description,
+                            link: link
                         })
                     });
                     const res = await response.json();

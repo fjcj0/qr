@@ -295,6 +295,7 @@ export default function Profile() {
                                     <th>QR</th>
                                     <th>Id</th>
                                     <th>Downloaded at</th>
+                                    <th>Count</th>
                                     <th>Description</th>
                                 </tr>
                             </thead>
@@ -302,10 +303,11 @@ export default function Profile() {
                                 {QrInformation.map((qr) => (
                                     <tr key={qr.id}>
                                         <td>
-                                            <img src={qr.qr_code} alt={`QR Code ${qr.id}`} className="qr-image-code" />
+                                            <img src={qr.baseurl+qr.qr_code} alt={`QR Code ${qr.id}`} className="qr-image-code" />
                                         </td>
                                         <td>{qr.id}</td>
                                         <td>{new Date(qr.downloaded_at).toLocaleString()}</td>
+                                        <td>{qr.count}</td>
                                         <td>{qr.description}</td>
                                     </tr>
                                 ))}
