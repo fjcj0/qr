@@ -1,0 +1,83 @@
+.container-text-frame{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: auto;
+    height: auto;
+    padding-bottom: 1rem;
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #333;
+    padding-top: 0.5rem;
+}
+.text-frame{
+    width: 50%;
+}
+.text-color-frame{
+    width: 50%;
+}
+.text-frame h4{
+    margin-left: 3rem;
+    margin-bottom: 0.3rem;
+}
+.text-frame input{
+    width: 50%;
+    margin-left: 3rem;
+    padding: 0.4rem;
+}
+.text-color-frame h4{
+    margin-left: 3rem;
+    margin-bottom: 0.3rem;
+}
+.text-color-frame input{
+    margin-left: 3rem;
+}
+:dir(rtl){
+    .text-frame h4{
+        margin-right: 3rem;
+    }
+    .text-frame input{
+        margin-right: 3rem;
+    }
+    .text-color-frame h4{
+        margin-right: 3rem;
+    }
+    .text-color-frame input{
+        margin-right: 3rem;
+    }
+}
+@media only screen and (max-width: 400px){
+    .container-text-frame{
+        flex-direction: column;
+    }
+    .text-frame{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .text-color-frame{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .text-frame h4{
+        margin-left: 0rem;
+    }
+    .text-frame input{
+        margin-left: 0rem;
+    }
+    .text-color-frame{
+        margin-top: 1rem;
+    }
+    .text-color-frame h4{
+        margin-left: 0rem;
+    }
+    .text-color-frame input{
+        margin-left: 0rem;
+    }
+}

@@ -1,0 +1,29 @@
+.shapes-body {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    max-width: 43rem;
+    position: relative;
+    align-items: start;
+    justify-content: start;
+}
+.shape-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem; 
+    height: 5rem; 
+    border-radius: 5px;
+    border: 1px solid #333;
+    margin: 0.5rem; 
+    overflow: hidden;
+    flex-shrink: 0; 
+    flex-grow: 0;
+    background: none;
+    cursor: pointer;
+}
+.image-shape-body {
+    width: 4rem;
+    height: 4rem;
+    background: white;
+}

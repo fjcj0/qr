@@ -1,0 +1,98 @@
+{
+    "HeaderComponent": {
+      "HomeLink": "Home",
+      "AboutLink": "About",
+      "InformationLink": "Information",
+      "ContactLink": "Contact"
+    },
+    "SignInComponent": {
+      "HeaderSignIn": "Login",
+      "InputPlaceHolderUserNameSignIn": "Username",
+      "InputPlaceHolderPasswordSignIn": "Password",
+      "ButtonSignIn": "Login",
+      "RememberPassword": "Remember me",
+      "ForgetPassword": "Forgot password?"
+    },
+    "SignUpComponent": {
+      "HeaderSignUp": "Sign Up",
+      "InputPlaceHolderUserNameSignUp": "Username",
+      "InputPlaceHolderPasswordSignUp": "Password",
+      "InputPlaceHolderEmailSignUp": "Email",
+      "ButtonSignUp": "Sign Up"
+    },
+    "MainComponent": {
+      "TitleMain": "Welcome to",
+      "TitleMainSpan": "Blue QR",
+      "ParagraphMain": "Blue, a pioneering tech company, introduces innovative QR solutions that streamline digital interactions, enhancing user engagement and connectivity.",
+      "CreateQrButton": "Create QR"
+    },
+    "InformationComponent": {
+      "InformationTitle": "QR Information",
+      "FirstTitleCard": "What is a QR Code?",
+      "FirstParCard": "A QR code (Quick Response code) is a type of matrix barcode (or two-dimensional barcode) that contains information about the item to which it is attached.",
+      "SecondTitleCard": "How QR Codes Work",
+      "SecondParCard": "QR codes consist of black squares arranged on a white background in a square grid. These codes can be scanned by a device such as a smartphone or a QR code scanner.",
+      "ThirdTitleCard": "Applications of QR Codes",
+      "ThirdParCard": "QR codes are widely used in various industries, including marketing, retail, and payments. They can be used to quickly direct users to websites or download apps."
+    },
+    "FooterComponent": {
+      "FooterAboutUsTitle": "About Us",
+      "FooterAboutUsPar": "We are a company that values quality and customer satisfaction above all else. Our mission is to provide the best products and services to our clients.",
+      "QuickLinksTitle": "Quick Links",
+      "QuickLinksHomeLink": "Home",
+      "QuickLinksServicesLink": "Services",
+      "QuickLinksAboutLink": "About",
+      "QuickLinksContactLink": "Contact",
+      "ContactUsTitle": "Contact Us",
+      "ContactUsEmail": "Email: info@company.com",
+      "ContactUsPhone": "Phone: +123-456-7890",
+      "ContactUsAddress": "Address: 1234 Street Name, City, Country",
+      "FollowUsTitle": "Follow Us",
+      "FooterBottom": "2024 Company Name. All Rights Reserved."
+    },
+    "AboutComponent": {
+      "ContainerAboutTitle": "Benefits Of",
+      "ContainerAboutTitleSpan": "QR Code",
+      "FirstBenefitTitle": "1.",
+      "FirstBenefitTitleSpan": "Quick Access",
+      "FirstBenefitPar": "Instantly access information or websites by scanning the code.",
+      "SecondBenefitTitle": "2.",
+      "SecondBenefitTitleSpan": "Versatility",
+      "SecondBenefitPar": "Encode various data types like text, URLs, and contact details.",
+      "ThirdBenefitTitle": "3.",
+      "ThirdBenefitTitleSpan": "Enhanced Engagement",
+      "ThirdBenefitPar": "Link to interactive content, promotions, and multimedia.",
+      "FourthBenefitTitle": "4.",
+      "FourthBenefitTitleSpan": "Ease of Use",
+      "FourthBenefitPar": "Simple to create and scan with most smartphones."
+    },
+    "QrComponent": {
+      "UrlLink": "Link URL",
+      "Apperence": "Appearance",
+      "ApperencePar": "Control appearance and element",
+      "Level": "Level",
+      "Logo": "Logo",
+      "Shape": "Shape",
+      "Frame": "Frame",
+      "Levels": ["Level 1", "Level 2", "Level 3", "Level 4", "Final Level"],
+      "LevelsPer": ["7%", "15%", "30%", "25%"],
+      "LogoUpload": "Upload logo image",
+      "ChooseLogo": "Or choose from here",
+      "BorderAndBackground": "Corners and background",
+      "BorderColorShape": "Corner color for shape",
+      "CenterColorShape": "Background color for shape",
+      "UseGradient": "Use gradient",
+      "TransparentBackground": "Transparent background",
+      "Corners": "Corner style",
+      "BorderCorners": "Border style for corners",
+      "CenterCorners": "Center style for corners",
+      "BorderColorCorner": "Border color for corners",
+      "BackgroundColorCorner": "Background color for corners",
+      "TextFrame": "Text",
+      "TextColorFrame": "Text color",
+      "FrameBackground": "Frame background",
+      "FramesCorner": "Frame corners",
+      "GenerateButtonQr": "Generate QR code",
+      "DownloadButtonQr": "Download QR code"
+    }
+  }  

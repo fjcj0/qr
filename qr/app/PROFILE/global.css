@@ -1,0 +1,8 @@
+.Main-content{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background: white;
+    width: 100%;
+    overflow-x: hidden;
+}

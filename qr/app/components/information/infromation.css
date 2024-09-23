@@ -1,0 +1,68 @@
+.information{
+    width: 100%;
+    background: white;
+}
+.information h1{
+    text-align: center;
+    color: #330bb0;
+}
+.container-information{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+.information-card{ 
+    width: 20rem;
+    height: 25rem;
+    border-radius: 15px;
+    background:black;
+    color: white;
+    border: 1.5px solid grey;
+    margin: 0.8rem;
+}
+.icon-info{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-info img{
+    width: 10rem;
+}
+.title-info{
+    width: 100%;
+    height: 5%;
+}
+.title-info h3{
+    text-align: center;
+}
+.par-info{
+    width: 100%;
+    height: 45%;
+    display: flex;
+    align-items:start;
+    justify-content: center;
+}
+.par-info p{
+    text-align: center;
+    max-width: 95%;
+    margin-top: 1rem;
+}
+ .par-info p{
+    font-family: "Josefin Sans", sans-serif;
+}
+[dir="rtl"] .par-info p{
+    font-family: "Changa", sans-serif;
+}
+@media only screen and (max-width: 234px){
+    .information-card{
+        height: 30rem;
+    }
+    .information-card p{
+        margin-top: 2rem;
+    }
+}

@@ -1,0 +1,57 @@
+.style-qr{
+    width: 45%;
+    height:auto;
+    border-radius: 10px;
+    background: #fff;
+    margin: 0.5rem;
+    border: 1px solid #333;
+    padding-bottom: 3rem;
+}
+.label-gradient-use{
+    display: flex;
+    margin-top: 0.7rem;
+}
+.my-style-qr{
+    position: relative;
+    margin-left: 1rem;
+    top: 1rem;
+}
+.label-gradient-use p {
+    margin-left: 0.5rem;
+    position: relative;
+    top: 0.4rem;
+    font-family: "Lilita One", sans-serif;
+}
+.transparent-use{
+    display: flex;
+    margin-top: 1rem;
+}
+.transparent-use input{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.transparent-use p{
+    font-family: "Lilita One", sans-serif;
+    position: relative;
+    top: 0.1rem;
+    margin-left: 0.3rem;
+}
+.input-color{
+    margin-top: 1rem;
+}
+:dir(rtl){
+    .my-style-qr{
+        margin-right: 1rem;
+    }
+    .label-gradient-use p{
+        margin-right: 0.5rem;
+    }
+    .transparent-use p{
+        margin-right: 0.3rem;
+    }
+}
+@media only screen and (max-width: 682px){
+    .style-qr{
+        width: 100%;
+    }
+}

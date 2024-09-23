@@ -1,0 +1,30 @@
+.frame-container{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    max-width: 43rem;
+}
+.frame-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem; 
+    height: 5rem; 
+    border-radius: 5px;
+    border: 1px solid #333;
+    margin: 0.5rem; 
+    overflow: hidden;
+    flex-shrink: 0; 
+    background: none;
+    cursor: pointer;
+}
+.image-frame{
+    width: 4rem;
+    height: 4rem;
+}
+.operation-style-frames{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

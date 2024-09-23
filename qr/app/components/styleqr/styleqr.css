@@ -1,0 +1,29 @@
+.background-border-qr-operation{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+}
+.title-border-background-qr h3{
+    margin-left: 1rem;
+    position: relative;
+    top: 1rem;
+}
+.corner-qr-title h3{
+    margin-left: 1rem;
+}
+.centers-title h6{
+    margin-left: 1rem;
+}
+:dir(rtl){
+    .corner-qr-title h3{
+        margin-right: 1rem;
+    }
+    .title-border-background-qr h3{
+        margin-right: 1rem;
+    }
+    .centers-title h6{
+        margin-right: 1rem;
+    }
+}

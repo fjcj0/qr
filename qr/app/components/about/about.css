@@ -1,0 +1,86 @@
+.about{
+width: 100%;
+height: 25rem;
+display: flex;
+flex-direction: row;
+}
+.container-about{
+    width: 100%;
+    height: 100%;
+}
+.container-about h1{
+    color: white;
+}
+.container-about h1 span{
+     color: #330bb0;
+}
+[dir="rtl"] .container-about h1{
+    margin-right: 0.8rem;
+    
+}
+.container-about h1{
+    margin-left: 0.8rem;
+}
+.background-about{
+    width: 50%;
+    height: 100%;
+    background: url('/link.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.benfits-qr {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    margin-top: 1rem;
+}
+
+.benfit-qr{
+    background: white;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+}
+.benfit-qr h3{
+    color:black;
+}
+.benfit-qr span{
+    color: #330bb0;
+}
+.benfit-qr p{
+    margin-top: 0.3rem;
+}
+.benfit-qr p{
+    font-family: "Josefin Sans", sans-serif;
+}
+[dir="rtl"] .benfit-qr p{
+    font-family: "Changa", sans-serif;
+}
+@media only screen and (max-width: 570px){
+    .container-about h1{
+        text-align: center;
+        font-size: 20px;
+    }
+    .background-about{
+        display: none;
+    }
+    .benfits-qr{
+        gap: 0px;
+    }
+    .benfit-qr h3{
+       font-size: 13px;
+    }
+    .benfit-qr p{
+        font-size: 10px;
+    }
+    
+}
+@media only screen and (max-width: 255px){
+    .benfits-qr {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0px; 
+        margin-top: 1rem;
+    }
+}

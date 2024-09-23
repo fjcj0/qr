@@ -1,0 +1,115 @@
+.sign-up-container{
+width: 33rem;
+height: 20rem;
+margin: auto;
+position: relative;
+top: 10rem;
+padding: auto;
+border-radius: 5px;
+background: white;
+background: url("/black.avif");
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+box-shadow: 0px 0px 1px grey;
+}
+[dir="rtl"] .sign-up-container{
+    font-family: "Changa", sans-serif;
+}
+[dir="rtl"] .sign-up-container input::placeholder{
+    font-family: "Changa", sans-serif;
+}
+[dir="rtl"] .sign-up-container input{
+    font-family: "Changa", sans-serif;
+}
+.sign-up-container h1{
+    font-family: "Changa", sans-serif;
+}
+ .sign-up-container input::placeholder{
+    font-family: "Josefin Sans", sans-serif;
+}
+.sign-up-container input{
+    font-family: "Josefin Sans", sans-serif;
+}
+.sign-up-container h1{
+    color: white;
+    margin-bottom: 0.5rem;
+}
+.my-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3rem 0rem;
+    width: 90%;
+}
+ .my-input img{
+    width: 1.2rem;
+    position: relative;
+    z-index: 1;
+    right: 1rem;
+}
+[dir="rtl"] .my-input img{
+    width: 1.2rem;
+    position: relative;
+    z-index: 1;
+    right: -1rem;
+}
+ .my-input input{
+    padding: 0.3rem 1rem;
+    border: none;
+    width: 13rem;
+    position: relative;
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+    left: 0.8rem;
+}
+[dir="rtl"] .my-input input{
+    padding: 0.3rem 1rem;
+    border: none;
+    width: 13rem;
+    position: relative;
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+    right: 0.8rem;
+}
+.sign-up-container button{
+    padding:0.7rem 1rem;
+    border-radius: 5px;
+    border: 1px solid white;
+    font-weight: bolder;
+    background: white;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: 0.3s ease;
+}
+[dir="rtl"] .sign-up-container button{
+    font-family: "Changa", sans-serif;
+}
+.sign-up-container button:hover{
+    background: transparent;
+    color: white;
+}
+@media only screen and (max-width: 550px){
+    .sign-up-container{
+        width: 25rem;
+    }
+}
+@media only screen and (max-width: 430px){
+    .sign-up-container{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 210px){
+    .my-input {
+        width: 100%;
+    }
+    .my-input input{
+        width: 90%;
+    }
+}

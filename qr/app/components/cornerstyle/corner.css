@@ -1,0 +1,38 @@
+.corner-container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    overflow-x: auto;
+    max-width: 43rem;
+}
+.corner-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem; 
+    height: 5rem; 
+    border-radius: 5px;
+    border: 1px solid #333;
+    margin: 0.5rem; 
+    overflow: hidden;
+    flex-shrink: 0; 
+    flex-grow: 0;
+    background: none;
+    cursor: pointer;
+}
+.image-corner{
+    width: 4rem;
+    height: 4rem;
+}
+.title-croner{
+    margin-left: 1rem;
+}
+.selected{
+    border: 1px solid orange;
+}
+:dir(rtl){
+    .title-croner{
+        margin-right: 1rem;
+    }
+}
