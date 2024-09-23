@@ -1,0 +1,12 @@
+POST http://localhost:3000/SignIn
+Content-Type: application/json
+{
+    "username": "allmore",
+    "password": "almore123"
+}
+
+GET http://localhost:3000/test_token
+Content-Type: application/json
+{
+
+}
