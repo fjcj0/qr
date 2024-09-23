@@ -34,3 +34,4 @@ class QrUserSerializer(serializers.Serializer):
     updated_at = serializers.DateTimeField(read_only=True)
     downloaded_at = serializers.DateTimeField(required=False)
     description = serializers.CharField(max_length=250,allow_null=True)
+    link = serializers.CharField(max_length=300,allow_null=True)

@@ -8,6 +8,7 @@ from django.db.utils import IntegrityError
 from django.contrib.auth.hashers import check_password,make_password
 from .serializer import TokenSerializers
 from .serializer import QrUserSerializer
+from django.shortcuts import redirect
 import os
 import random
 import uuid
@@ -223,6 +224,7 @@ def ChangeInformation(request):
     return Response({"error": "Method not allowed."}, status=405)
 @api_view(['POST', 'GET'])
 def AddQr(request):
+    base_url = settings.BASE_URL
     if request.method == 'POST':
         serializer = QrUserSerializer(data=request.data)
         if serializer.is_valid():
@@ -231,16 +233,21 @@ def AddQr(request):
                 qr_code = serializer.validated_data.get('qr_code')
                 downloaded_at = serializer.validated_data.get('downloaded_at')
                 description = serializer.validated_data.get('description')
+                slug = str(uuid.uuid4())
+                link = serializer.validated_data.get('link')
+                relative_url = qr_code.replace("http://127.0.0.1:8000", "")
                 with connection.cursor() as cur:
                     cur.execute("""
-                        INSERT INTO QRS (user_id, qr_code, downloaded_at,description)
-                        VALUES (%s, %s, %s,%s)
-                    """, [user_id, qr_code, downloaded_at,description])
+                        INSERT INTO QRS (user_id, qr_code, downloaded_at,description,slug,link)
+                        VALUES (%s, %s, %s,%s,%s,%s)
+                    """, [user_id, relative_url, downloaded_at,description,slug,link])
+                qr_url = f"{base_url}/qr/{slug}/"
                 return Response({
                     "success": "QR code has been added to the profile",
-                    "imageurl": qr_code,
+                    "imageurl": relative_url,
                     "downloaded_at": downloaded_at,
-                    "user_id": user_id
+                    "user_id": user_id,
+                    "slug": slug,
                 }, status=201)
             except Exception as e:
                 logger.error(f"Server error: {str(e)}")
@@ -250,7 +257,7 @@ def AddQr(request):
         try:
             with connection.cursor() as cur:
                 cur.execute("""
-                    SELECT id, user_id, qr_code, created_at, updated_at, downloaded_at,description
+                    SELECT id, user_id, qr_code, created_at, updated_at, downloaded_at,description,slug,link
                     FROM QRS
                 """)
                 QRS = cur.fetchall()
@@ -262,7 +269,9 @@ def AddQr(request):
                     "created_at": QR[3],
                     "updated_at": QR[4],
                     "downloaded_at": QR[5],
-                    "description": QR[6]
+                    "description": QR[6],
+                    "slug": QR[7],
+                    "link": QR[8]
                 }
                 for QR in QRS
             ]
@@ -272,35 +281,51 @@ def AddQr(request):
             return Response({"error": f"Server error: {str(e)}"}, status=500)
 @api_view(['POST'])
 def SelestQr(request):
+    base_url = settings.BASE_URL
     if request.method == 'POST':
         try:
             user_id = request.data.get('user_id')
             if not user_id:
                 return Response({"error": "user_id is required"}, status=400)
-
-            # Query to fetch qr_code, id, and downloaded_at from the database
             with connection.cursor() as cur:
                 cur.execute("""
-                    SELECT QRS.qr_code, QRS.id, QRS.downloaded_at,QRS.description
+                    SELECT QRS.qr_code, QRS.id, QRS.downloaded_at,QRS.count,QRS.description
                     FROM QRS 
                     INNER JOIN USERS ON USERS.id = QRS.user_id
                     WHERE USERS.id = %s
                 """, [user_id])
                 qr_codes = cur.fetchall()
-
-            # Prepare the list of QR codes with id and downloaded_at
             qr_code_list = [
                 {
                     "qr_code": qr_code[0],
                     "id": qr_code[1],
                     "downloaded_at": qr_code[2],
-                    "description": qr_code[3]
+                    "count": qr_code[3],
+                    "description": qr_code[4],
+                    "baseurl": base_url
                 } for qr_code in qr_codes
             ]
-
-            # Return the list as a response
             return Response(qr_code_list, status=200)
-
         except Exception as e:
             logger.error(f"Server error: {str(e)}")
             return Response({"error": f"Server error: {str(e)}"}, status=500)
+@api_view(['POST'])
+def Scans(request, slug):
+    if request.method == 'POST':
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT id, count FROM QRS WHERE slug = %s", [slug])
+                qr_code = cursor.fetchone()
+                if qr_code:
+                    qr_id, scan_count = qr_code
+                    cursor.execute("UPDATE QRS SET count = count + 1 WHERE id = %s", [qr_id])
+                    with connection.cursor() as cursor:
+                        cursor.execute("SELECT link FROM QRS WHERE slug = %s", [slug])
+                        link = cursor.fetchone()
+                    return redirect(link)
+                else:
+                    return Response({"error": "Slug not found"}, status=404)
+        except Exception as e:
+            logger.error(f"Error in Scans view: {str(e)}")
+            return Response({"error": f"Server error: {str(e)}"}, status=500)
+    return Response({"error": "Method not allowed."}, status=405)
