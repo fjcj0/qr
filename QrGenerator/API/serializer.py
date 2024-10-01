@@ -35,3 +35,9 @@ class QrUserSerializer(serializers.Serializer):
     downloaded_at = serializers.DateTimeField(required=False)
     description = serializers.CharField(max_length=250,allow_null=True)
     link = serializers.CharField(max_length=300,allow_null=True)
+class ConfirmationSerializer(serializers.Serializer):
+    confirmation_code = serializers.CharField(max_length=4)
+    email = serializers.EmailField(max_length=255)
+class UserDuplicateSerializer(serializers.Serializer):
+    email = serializers.CharField(max_length=255)
+    username = serializers.CharField(max_length=255)

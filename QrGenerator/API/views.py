@@ -22,6 +22,10 @@ from .serializer import UsersSerializer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import ObtainAuthToken
+from django.conf import settings
+from django.core.mail import send_mail
+from .serializer import ConfirmationSerializer
+from .serializer import UserDuplicateSerializer
 logger = logging.getLogger(__name__)
 @api_view(['GET', 'POST'])
 def GetQr(request):
@@ -69,6 +73,44 @@ def GetQr(request):
     elif request.method == "GET":
         return Response({"message": "GET request received. This endpoint only handles POST requests."}, status=200)
     return Response({'error': 'Method not allowed.'}, status=405)
+def send_confirmation_code(email):
+    confirmation_code = str(random.randint(1000, 9999))
+    subject = 'Your Email Confirmation Code'
+    message = f'Your confirmation code is: {confirmation_code}'
+    email_from = settings.EMAIL_HOST_USER
+    send_mail(subject, message, email_from, [email])
+    return confirmation_code
+@api_view(['POST'])
+def CheckConfirmationCode(request):
+    confirmationserializer = ConfirmationSerializer(data=request.data)
+    try:
+        if confirmationserializer.is_valid():
+            confirmation_code = confirmationserializer.validated_data.get('confirmation_code')
+            email = confirmationserializer.validated_data.get('email')
+            sent_code = send_confirmation_code(email)
+            if sent_code != confirmation_code:
+                return Response({"error": "Confirmation code is not the same or may have expired"}, status=400)
+            return Response({"status": "Successful, the confirmation code is valid"}, status=201)
+    except Exception as error:
+        return Response({"error": f"Error: {error}"}, status=500)
+@api_view(['POST'])
+def CheckUserDuplicate(request):
+    duplicate_user_serializer = UserDuplicateSerializer(data=request.data)
+    try:
+        if duplicate_user_serializer.is_valid():
+            email = duplicate_user_serializer.validated_data.get('email')
+            username = duplicate_user_serializer.validated_data.get('username')
+            with connection.cursor() as cur:
+                cur.execute("SELECT username, email FROM users WHERE email=%s OR username=%s", [email, username])
+                user = cur.fetchone()
+                if user:
+                    return Response({"error": "Username or email already exists"}, status=400)
+                return Response({"status": "Successful"}, status=201)
+    except IntegrityError:
+        return Response({"error": "Integrity error occurred."}, status=400)
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+    return Response(duplicate_user_serializer.errors, status=400)
 @api_view(['GET', 'POST'])
 def Users(request):
     if request.method == 'POST':
@@ -314,14 +356,12 @@ def Scans(request, slug):
     if request.method == 'POST':
         try:
             with connection.cursor() as cursor:
-                cursor.execute("SELECT id, count FROM QRS WHERE slug = %s", [slug])
+                cursor.execute("SELECT id, count, link FROM QRS WHERE slug = %s", [slug])
                 qr_code = cursor.fetchone()
                 if qr_code:
-                    qr_id, scan_count = qr_code
+                    qr_id, scan_count, link = qr_code
                     cursor.execute("UPDATE QRS SET count = count + 1 WHERE id = %s", [qr_id])
-                    with connection.cursor() as cursor:
-                        cursor.execute("SELECT link FROM QRS WHERE slug = %s", [slug])
-                        link = cursor.fetchone()
+                    connection.commit()
                     return redirect(link)
                 else:
                     return Response({"error": "Slug not found"}, status=404)
