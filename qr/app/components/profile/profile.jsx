@@ -116,7 +116,7 @@ export default function Profile() {
             fetchToken();
     }, []);
     useEffect(() => {
-        const FetchQr = async () => {
+        const FetchIngQr = async () => {
             try {
                 const response = await fetch("http://127.0.0.1:8000/SelectQr/", {
                     method: "POST",
@@ -133,7 +133,7 @@ export default function Profile() {
                 }
             } catch (error) {}
         };
-        FetchQr();
+            FetchIngQr();
     }, [id]);
     const showTools = () => {
         var tools = document.getElementById('tools-buttons');
